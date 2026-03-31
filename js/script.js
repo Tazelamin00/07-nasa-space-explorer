@@ -77,15 +77,17 @@ function displayGallery(images) {
 }
 
 // When the button is clicked, fetch and show images
-  // Get the selected dates
+// Add a click event to the button to fetch and show images
+button.addEventListener('click', async function() {
+  // Get the selected dates from the input fields
   const startDate = startInput.value;
   const endDate = endInput.value;
-  // Show a loading message
+  // Show a loading message while fetching
   gallery.innerHTML = '<p class="loading-message">Loading images...</p>';
   try {
-    // Fetch images from NASA
+    // Fetch images from NASA's API
     const images = await fetchAPODImages(startDate, endDate);
-    // Display them in the gallery
+    // Display the images in the gallery
     displayGallery(images);
   } catch (error) {
     // Show an error message if something goes wrong
